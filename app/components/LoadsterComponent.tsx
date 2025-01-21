@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import PageContent from "./PageContent";
+import Image from "next/image";
 
 interface LoadsterComponentProps {
   countdownSeconds: number;
@@ -62,10 +63,10 @@ const LoadsterComponent = ({ countdownSeconds }: LoadsterComponentProps) => {
     }
 
     setIsProcessingPayment(true); // Start payment processing
-    
+
     try {
       const signer = provider.getSigner();
-      const sign = await signer.signMessage(`Sending ${amount} to "0x3rqwfea"`)
+      const sign = await signer.signMessage(`Sending ${amount} to "0x1978519a96"`)
       console.log("user has signed", sign)
       await createTranasction(signer)
 
@@ -78,7 +79,7 @@ const LoadsterComponent = ({ countdownSeconds }: LoadsterComponentProps) => {
     }
   };
 
-  const createTranasction = async (signer:any) => {
+  const createTranasction = async (signer: any) => {
     console.log("Creating transaction...");
     const transaction = await signer.sendTransaction({
       to: "0x1978519a96A37b5f5ee52df866D62e743051c1F6", // Replace with the recipient address
@@ -93,7 +94,7 @@ const LoadsterComponent = ({ countdownSeconds }: LoadsterComponentProps) => {
       {isLoading ? (
         <section className="flex flex-col items-center">
           {/* Add image...  */}
-
+          <Image src="/safeLife.jpg" alt="safe life" width={300} height={300} className="rounded drop-shadow-lg inner-shadow" />
           {/* Loading Spinner */}
           <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500 border-solid mb-6"></div>
 
@@ -150,7 +151,11 @@ const LoadsterComponent = ({ countdownSeconds }: LoadsterComponentProps) => {
           </div>
         </section>
       ) : (
-        <PageContent UserAddress={walletAddress} sendPaymentFunction={sendPayment} />
+        <PageContent
+          UserAddress={walletAddress}
+          sendPaymentFunction={sendPayment}
+          connect={connectWallet}
+        />
       )}
     </div>
   );

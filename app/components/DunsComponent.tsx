@@ -7,9 +7,11 @@ interface DunsComponetProps {
     activeDun: any
     currentDun: any
     duns: any
+    UserAddress: any
+    connect: any
 }
 
-const DunsComponent = ({ activeDun, setActiveDun, currentDun, duns }: DunsComponetProps) => {
+const DunsComponent = ({ activeDun, setActiveDun, currentDun, duns, UserAddress, connect }: DunsComponetProps) => {
     return (
         <section className="md:w-full max-w-4xl h-[1050px] bg-[#111] shadow-lg rounded-lg p-5">
 
@@ -41,7 +43,13 @@ const DunsComponent = ({ activeDun, setActiveDun, currentDun, duns }: DunsCompon
             </div>
 
             {/* Duns Content */}
-            <SelectedDun activeDun={currentDun} duns={duns} setActiveDun={setActiveDun} />
+            <SelectedDun
+                activeDun={currentDun}
+                duns={duns}
+                setActiveDun={setActiveDun}
+                UserAddress={UserAddress}
+                connect={connect}
+            />
 
         </section>
     )

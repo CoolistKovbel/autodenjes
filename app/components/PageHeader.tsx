@@ -13,6 +13,7 @@ interface PageHeaderProps {
 
 const PageHeader = ({ sendPaymentFunction, UserAddress, connect }: PageHeaderProps) => {
 
+    console.log(UserAddress, "CURENT user")
 
 
     return (
@@ -65,20 +66,30 @@ const PageHeader = ({ sendPaymentFunction, UserAddress, connect }: PageHeaderPro
                     Any amount will help out! Just enter an amount of Ether and hit send. Who knows? You may
                     receive a ticket!
                 </p>
-                <form onSubmit={sendPaymentFunction} className="flex items-center gap-4">
-                    <input
-                        step="any" // Allows decimals
-                        min="0"
-                        name="amount"
-                        id="amount"
-                        type="number"
-                        className="bg-gray-200 p-3 rounded-lg w-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                        placeholder="Enter amount in ETH"
-                    />
-                    <button className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600">
-                        Send
-                    </button>
-                </form>
+                {
+                    UserAddress !== null ? (
+                        <form onSubmit={sendPaymentFunction} className="flex items-center gap-4">
+                            <input
+                                step="any" // Allows decimals
+                                min="0"
+                                name="amount"
+                                id="amount"
+                                type="number"
+                                className="bg-gray-200 p-3 rounded-lg w-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                placeholder="Enter amount in ETH"
+                            />
+                            <button className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600">
+                                Send
+                            </button>
+                        </form>
+                    ) : (
+                        <button
+                            onClick={connect}
+                            className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600">
+                            connect now
+                        </button>
+                    )
+                }
             </div>
         </header>
     )

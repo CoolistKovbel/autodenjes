@@ -9,7 +9,6 @@ interface PageContentProps {
   UserAddress: any;
   sendPaymentFunction: any;
   connect: any;
-  userAccount: any;
 }
 
 
@@ -29,6 +28,7 @@ const PageContent = ({ sendPaymentFunction, UserAddress, connect }: PageContentP
       totalSupplyInfo: "2,100,000",
       hourlyDistributed: "0.003",
       totalDistributed: "5,000",
+      distrubuteTimer: 10300
     },
     {
       id: 2,
@@ -42,6 +42,7 @@ const PageContent = ({ sendPaymentFunction, UserAddress, connect }: PageContentP
       totalSupplyInfo: "1,000,000",
       hourlyDistributed: "0.006",
       totalDistributed: "2,000",
+      distrubuteTimer: 10300
     },
     {
       id: 3,
@@ -55,6 +56,7 @@ const PageContent = ({ sendPaymentFunction, UserAddress, connect }: PageContentP
       totalSupplyInfo: "500,000",
       hourlyDistributed: "0.01",
       totalDistributed: "10,000",
+      distrubuteTimer: 10300
     },
   ];
 
@@ -82,6 +84,8 @@ const PageContent = ({ sendPaymentFunction, UserAddress, connect }: PageContentP
         activeDun={activeDun}
         currentDun={currentDun}
         duns={duns}
+        UserAddress={UserAddress}
+        connect={connect}
       />
 
 
@@ -89,24 +93,24 @@ const PageContent = ({ sendPaymentFunction, UserAddress, connect }: PageContentP
       <section>
         <h4>LeaderBoards</h4>
         <table>
-            <thead>
-              <tr>
-                <td>User:</td>
-                <td>amount:</td>
-                <td>withdrawl:</td>
-                <td>donated:</td>
-                <td>messages:</td>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Lyub</td>
-                <td>14</td>
-                <td>143131</td>
-                <td>600</td>
-                <td>2</td>
-              </tr>
-            </tbody>
+          <thead>
+            <tr>
+              <td>User:</td>
+              <td>amount:</td>
+              <td>withdrawl:</td>
+              <td>donated:</td>
+              <td>messages:</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Lyub</td>
+              <td>14</td>
+              <td>143131</td>
+              <td>600</td>
+              <td>2</td>
+            </tr>
+          </tbody>
         </table>
       </section>
     </section>
