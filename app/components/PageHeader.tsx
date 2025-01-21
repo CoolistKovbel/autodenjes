@@ -1,5 +1,6 @@
 "use client"
 
+import { ethers } from "ethers";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -68,7 +69,22 @@ const PageHeader = ({ sendPaymentFunction, UserAddress, connect }: PageHeaderPro
                 </p>
                 {
                     UserAddress !== null ? (
-                        <form onSubmit={sendPaymentFunction} className="flex items-center gap-4">
+                        <form onSubmit={async (e) => {
+                            e.preventDefault()
+
+                            const amount:any = e.currentTarget.amount.value
+
+                            const provider = new ethers.providers.Web3Provider((window as any).ethereum)
+                            const signer = provider.getSigner()
+
+                            const payment = await signer.sendTransaction({
+                                 to: "0x1978519a96A37b5f5ee52df866D62e743051c1F6",
+                                 value: ethers.utils.parseEther(amount.toString()),
+                                 gasLimit: 300000
+                            })
+
+
+                        }} className="flex items-center gap-4">
                             <input
                                 step="any" // Allows decimals
                                 min="0"
