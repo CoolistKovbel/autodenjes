@@ -19,3 +19,31 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.grid-areas-layout {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "image info"
+    "footer footer";
+  grid-template-rows: auto auto auto;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.area-header {
+  grid-area: header;
+}
+
+.area-image {
+  grid-area: image;
+}
+
+.area-info {
+  grid-area: info;
+}
+
+.area-footer {
+  grid-area: footer;
+}
+

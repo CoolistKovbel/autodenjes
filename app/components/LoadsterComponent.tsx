@@ -54,7 +54,7 @@ const LoadsterComponent = ({ countdownSeconds }: LoadsterComponentProps) => {
   const sendPayment = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    await connectWallet()
+    console.log("sending funds", amount)
 
     if (!provider || !amount) {
       alert("Please connect your wallet and enter an amount.");
@@ -62,13 +62,13 @@ const LoadsterComponent = ({ countdownSeconds }: LoadsterComponentProps) => {
     }
 
     setIsProcessingPayment(true); // Start payment processing
+    
     try {
       const signer = provider.getSigner();
-      const transaction = await signer.sendTransaction({
-        to: "0x1978519a96A37b5f5ee52df866D62e743051c1F6", // Replace with the recipient address
-        value: ethers.utils.parseEther(amount),
-      });
-      await transaction.wait();
+      const sign = await signer.signMessage(`Sending ${amount} to "0x3rqwfea"`)
+      console.log("user has signed", sign)
+      await createTranasction(signer)
+
       setPaymentStatus("Payment successful!");
     } catch (error) {
       console.error("Payment failed:", error);
@@ -77,6 +77,16 @@ const LoadsterComponent = ({ countdownSeconds }: LoadsterComponentProps) => {
       setIsProcessingPayment(false); // Stop payment processing
     }
   };
+
+  const createTranasction = async (signer:any) => {
+    console.log("Creating transaction...");
+    const transaction = await signer.sendTransaction({
+      to: "0x1978519a96A37b5f5ee52df866D62e743051c1F6", // Replace with the recipient address
+      value: ethers.utils.parseEther(amount),
+    });
+
+    await transaction.wait();
+  }
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-[#212] text-gray-200">
