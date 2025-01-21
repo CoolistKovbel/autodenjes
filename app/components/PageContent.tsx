@@ -28,7 +28,8 @@ const PageContent = ({ sendPaymentFunction, UserAddress, connect }: PageContentP
       totalSupplyInfo: "2,100,000",
       hourlyDistributed: "0.003",
       totalDistributed: "5,000",
-      distrubuteTimer: 10300
+      distrubuteTimer: 10300,
+      nftHolister: false
     },
     {
       id: 2,
@@ -42,7 +43,8 @@ const PageContent = ({ sendPaymentFunction, UserAddress, connect }: PageContentP
       totalSupplyInfo: "1,000,000",
       hourlyDistributed: "0.006",
       totalDistributed: "2,000",
-      distrubuteTimer: 10300
+      distrubuteTimer: 1000,
+      nftHolister: true
     },
     {
       id: 3,
@@ -56,7 +58,8 @@ const PageContent = ({ sendPaymentFunction, UserAddress, connect }: PageContentP
       totalSupplyInfo: "500,000",
       hourlyDistributed: "0.01",
       totalDistributed: "10,000",
-      distrubuteTimer: 10300
+      distrubuteTimer: 300,
+      nftHolister: true
     },
   ];
 

@@ -13,7 +13,7 @@ interface DunsComponetProps {
 
 const DunsComponent = ({ activeDun, setActiveDun, currentDun, duns, UserAddress, connect }: DunsComponetProps) => {
     return (
-        <section className="md:w-full max-w-4xl h-[1050px] bg-[#111] shadow-lg rounded-lg p-5">
+        <section className="md:w-full max-w-4xl md:h-[1050px] bg-[#111] shadow-lg rounded-lg p-5">
 
             <header className="mb-8 text-center">
                 <h3 className="text-5xl font-bold text-gray-300 mb-2">Join Our Dunes</h3>

@@ -20,7 +20,6 @@ interface ActiveDunComponentProps {
 }
 
 const ActiveDunComponent = ({ dun, UserAddress, connect }: ActiveDunComponentProps) => {
-
   const [timer, setTimer] = useState<number>(dun.distrubuteTimer);
 
   useEffect(() => {
@@ -119,6 +118,7 @@ const ActiveDunComponent = ({ dun, UserAddress, connect }: ActiveDunComponentPro
         <p className="text-gray-700 font-medium">Hourly Distributed: {dun.hourlyDistributed}</p>
         <p className="text-gray-700 font-medium">Total Distributed: {dun.totalDistributed}</p>
       </div>
+
     </section>
   );
 };
